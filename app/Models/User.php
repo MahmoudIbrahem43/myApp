@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable;
+
+
+    protected $fillable = [
+        'name',
+        'user_name',
+        'mobile',
+        'date_of_birth',
+        'email',
+        'gender',
+        'country',
+        'city',
+        'password',
+        'role_id'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+ public function role(){
+     return $this->belongsTo(Role::class);
+ }
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+ /*   protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];*/
+}
+ 
